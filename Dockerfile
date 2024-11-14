@@ -1,7 +1,7 @@
 ############################################################
 # Build stage
 ############################################################
-FROM node:20.17.0-alpine3.20 AS build
+FROM node:20.14.0-alpine3.20 AS build
 
 RUN apk --no-cache add \
    build-base \
@@ -28,7 +28,7 @@ RUN npm ci --omit=dev --ignore-scripts \
 ############################################################
 # Release stage
 ############################################################
-FROM node:20.17.0-alpine3.20 AS release
+FROM node:20.14.0-alpine3.20 AS release
 
 VOLUME /parse-server/cloud /parse-server/config
 
@@ -48,4 +48,5 @@ ENV PORT=1337
 USER node
 EXPOSE $PORT
 
-ENTRYPOINT ["node", "./bin/parse-server"]
+ENTRYPOINT ["node", "./bin/parse-server", "--", "config/config.json" ]
+#ENTRYPOINT ["npm", "start", "--", "config/config.json"]
