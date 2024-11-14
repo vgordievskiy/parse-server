@@ -1,0 +1,3 @@
+[submodule "cloud_salesnotes"]
+	path = cloud_salesnotes
+	url = git@bitbucket.org:vgordievskiy/salesnotes_cloud_functions.git
