@@ -42,6 +42,7 @@ COPY package*.json ./
 COPY bin bin
 COPY public_html public_html
 COPY views views
+COPY cloud_salesnotes /parse-server/cloud
 RUN mkdir -p logs && chown -R node: logs
 
 ENV PORT=1337
